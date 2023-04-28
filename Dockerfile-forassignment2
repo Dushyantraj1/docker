@@ -1,0 +1,11 @@
+From apache-ubuntu as build
+Workdir /tmp
+RUN apt-get update -y && \
+    echo "This server" > index.html
+
+
+From apache-ubuntu as prod
+copy --from=build /tmp/index.html /var/www/html
+Expose 80
+CMD service apache2 restart
+

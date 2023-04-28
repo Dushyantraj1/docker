@@ -1,0 +1,10 @@
+From ubuntu as build
+RUN apt-get update -y && \
+    apt-get install apache2 -y && \
+    echo "this" > index.html
+
+From build as builder
+copy index.html /var/www/html
+Expose 80
+Run service apache2 start
+

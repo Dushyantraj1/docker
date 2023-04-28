@@ -1,0 +1,28 @@
+version: '3'
+services:
+  database:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USERNAME=root
+      - MYSQL_DATABASE=mydatabase
+    volumes:
+      - ./volumefinal:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - mynetwork
+
+  webserver2:
+    build: /root/Finalassignment
+    depends_on:
+      - database
+    ports:
+      - "80:80"
+    networks:
+      - mynetwork
+    volumes:
+      - ./:/var/www/html  
+networks:
+  mynetwork:
+

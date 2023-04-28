@@ -1,0 +1,7 @@
+FROM ubuntu
+WORKDIR /tmp
+RUN echo "this devops group" > /tmp/testfile
+ENV myname dushyant
+copy testfile1 /tmp
+add test.tar.gz /tmp
+
